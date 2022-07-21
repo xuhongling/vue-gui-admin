@@ -89,7 +89,18 @@ export const useUserStore = defineStore({
     ): Promise<GetUserInfoModel | null> {
       try {
         const { goHome = true, ...loginParams } = params;
-        const data = await loginApi(loginParams);
+        console.log(loginParams, 'loginParams');
+        // 登录接口，根据项目自定
+        // const data = await loginApi(loginParams);
+        const data = {
+          token:
+            'eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiMywtMSwxNTMyMTc5NjI2MTQ1NjE1ODczIiwibW9iaWxlIjoiMTc2MjE2Mzc5MTIiLCJleHAiOjE2NTgzOTU2NjgsInVzZXJJZCI6IjEiLCJpYXQiOjE2NTgzOTIwNjgsInJlYWxuYW1lIjoi6LaF57qn566h55CG5ZGYIiwidXNlcm5hbWUiOiJhZG1pbiJ9.aQIkethHjfkeeQsInoDfxCsKOFfJENlFht7imf9ImUQ',
+          roles: [{ roleId: '-1', roleName: '超级管理员', roleCode: '0001' }],
+          userId: '1',
+          username: 'admin',
+          realname: '超级管理员',
+          avatar: null,
+        };
         const { token } = data;
 
         // 储蓄登录返回的用户信息
