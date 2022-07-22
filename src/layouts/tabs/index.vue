@@ -313,7 +313,6 @@
 
     .tabs-view-content {
       height: calc(100vh - @header-height - @multiple-height);
-      padding: 10px 14px 0;
       overflow: auto;
     }
   }

@@ -1,23 +1,19 @@
 <template>
-  <div>workbench</div>
+  <div class="workbench">
+    {{ state.name }}
+  </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, toRefs, reactive } from 'vue';
-  export default defineComponent({
-    name: 'index',
-    setup() {
-      const state = reactive({
-        name: 'vue3 Typescript',
-      });
-
-      return { ...toRefs(state) };
-    },
+<script lang="ts" setup>
+  import { reactive } from 'vue';
+  const state = reactive({
+    name: '工作台',
   });
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
-  div {
+  .workbench {
     width: 100%;
+    height: 100%;
   }
 </style>

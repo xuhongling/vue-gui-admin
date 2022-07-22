@@ -173,6 +173,7 @@
     .ant-menu {
       line-height: @header-height;
       border-bottom: none;
+      user-select: none;
     }
   }
 </style>

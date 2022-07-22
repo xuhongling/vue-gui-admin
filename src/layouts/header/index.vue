@@ -7,6 +7,10 @@
     <div class="layout-header-menu">
       <LayoutMenu :collapsed="props.collapsed" />
     </div>
+    <!-- action  -->
+    <div class="layout-header-action">
+      <UserDropDown />
+    </div>
   </Layout.Header>
 </template>
 
@@ -15,6 +19,7 @@
   import { PageEnum } from '/@/enums/pageEnum';
   import { useUserStoreWithOut } from '/@/store/modules/user';
   import { Layout } from 'ant-design-vue';
+  import { UserDropDown } from './components';
   import LayoutMenu from '../menu/index.vue';
 
   const projectName = import.meta.env.VITE_GLOB_APP_TITLE;
@@ -62,6 +67,12 @@
       flex: 1;
       height: 100%;
       min-width: 0;
+    }
+    &-action {
+      display: flex;
+      min-width: 120px;
+      align-items: center;
+      margin-left: 10px;
     }
   }
 </style>
