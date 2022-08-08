@@ -70,9 +70,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
             'component-background': '#fff',
             'border-color-base': '#303030',
           },
-          additionalData: `
-            @import "ant-design-vue/dist/antd.variable.css";
-          `,
         },
       },
     },
@@ -93,7 +90,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       },
     },
     build: {
-      target: 'es2015',
+      target: 'es2020',
       cssTarget: 'chrome80',
       outDir: 'dist',
       // minify: 'terser',

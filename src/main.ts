@@ -10,6 +10,7 @@ import { setupRouterGuard } from '/@/router/guard';
 
 // Ant design components
 import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.variable.css';
 
 import '/@/design/index.less';
 
