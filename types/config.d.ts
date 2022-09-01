@@ -13,24 +13,24 @@ import { CacheTypeEnum } from '/@/enums/cacheEnum';
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
 
 export interface MenuSetting {
-  bgColor: string;
-  fixed: boolean;
-  collapsed: boolean;
-  canDrag: boolean;
-  show: boolean;
-  hidden: boolean;
-  split: boolean;
-  menuWidth: number;
-  mode: MenuModeEnum;
-  type: MenuTypeEnum;
-  theme: ThemeEnum;
-  topMenuAlign: 'start' | 'center' | 'end';
-  trigger: TriggerEnum;
-  accordion: boolean;
-  closeMixSidebarOnChange: boolean;
-  collapsedShowTitle: boolean;
-  mixSideTrigger: MixSidebarTriggerEnum;
-  mixSideFixed: boolean;
+  bgColor?: string;
+  fixed?: boolean;
+  collapsed?: boolean;
+  canDrag?: boolean;
+  show?: boolean;
+  hidden?: boolean;
+  split?: boolean;
+  menuWidth?: number;
+  mode?: MenuModeEnum;
+  type?: MenuTypeEnum;
+  theme?: ThemeEnum;
+  topMenuAlign?: 'start' | 'center' | 'end';
+  trigger?: TriggerEnum;
+  accordion?: boolean;
+  closeMixSidebarOnChange?: boolean;
+  collapsedShowTitle?: boolean;
+  mixSideTrigger?: MixSidebarTriggerEnum;
+  mixSideFixed?: boolean;
 }
 
 export interface MultiTabsSetting {

@@ -7,6 +7,7 @@ import App from './App.vue';
 import { createApp } from 'vue';
 import { router, setupRouter } from '/@/router';
 import { setupRouterGuard } from '/@/router/guard';
+import { createPinia } from 'pinia';
 
 // Ant design components
 import Antd from 'ant-design-vue';
@@ -16,9 +17,13 @@ import '/@/design/index.less';
 
 async function bootstrap() {
   const app = createApp(App);
+  const pinia = createPinia();
 
   // 注册Antd全局组件
   app.use(Antd);
+
+  // 解决 injection "symbol(pinia)" not found 报错信息问题
+  app.use(pinia);
 
   // 配置路由
   setupRouter(app);

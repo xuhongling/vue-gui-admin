@@ -18,6 +18,7 @@ const dashboard: AppRouteModule = {
       name: 'Analysis',
       component: () => import('/@/views/dashboard/analysis/index.vue'),
       meta: {
+        icon: 'ion:home-outline',
         title: '分析页',
       },
     },
@@ -26,6 +27,7 @@ const dashboard: AppRouteModule = {
       name: 'Workbench',
       component: () => import('/@/views/dashboard/workbench/index.vue'),
       meta: {
+        icon: 'ion:home-outline',
         title: '工作台',
       },
     },

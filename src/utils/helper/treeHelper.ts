@@ -74,7 +74,7 @@ export function findPath<T = any>(
 ): T | T[] | null {
   config = getConfig(config);
   const path: T[] = [];
-  const list = [...tree];
+  const list = tree ? [...tree] : [];
   const visitedSet = new Set();
   const { children } = config;
   while (list.length) {

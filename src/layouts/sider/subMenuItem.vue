@@ -1,6 +1,6 @@
 <template>
   <!-- 目录 -->
-  <template v-if="isShowSubMenu && !getSplit">
+  <template v-if="isShowSubMenu">
     <a-sub-menu :key="props.menuInfo?.path" v-bind="$attrs">
       <template #title>
         <span>
@@ -26,9 +26,8 @@
 <script lang="ts">
   import { type PropType, computed } from 'vue';
   import type { RouteRecordRaw } from 'vue-router';
-  import { defineComponent } from 'vue';
+  import { defineComponent, toRefs, reactive } from 'vue';
   import Icon from '/@/components/Icon/index';
-  import { useMenuSetting } from '/@/hooks/setting/useAppSetting';
 
   export default defineComponent({
     name: 'LayoutMenuItem',
@@ -42,7 +41,10 @@
       },
     },
     setup(props) {
-      const { getSplit } = useMenuSetting();
+      const state = reactive({
+        name: 'vue3 Typescript',
+      });
+
       const menuChildren = computed(() => {
         return [...(props.menuInfo?.children || [])]
           .filter((n) => !n.meta?.hideInMenu)
@@ -57,7 +59,7 @@
         );
       });
 
-      return { props, menuChildren, isShowSubMenu, getSplit };
+      return { ...toRefs(state), props, menuChildren, isShowSubMenu };
     },
   });
 </script>
