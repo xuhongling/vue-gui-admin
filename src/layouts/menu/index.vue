@@ -86,7 +86,7 @@
   watch(
     () => currentRoute.fullPath,
     async () => {
-      if (currentRoute.name === PageEnum.BASE_LOGIN || props.collapsed) return;
+      if (currentRoute.name === PageEnum.BASE_LOGIN) return;
       state.openKeys = getOpenKeys();
       const meta = currentRoute.meta;
       if (meta?.activeMenu) {
