@@ -14,7 +14,7 @@ export function getStorageShortName() {
 export function getAppEnvConfig() {
   const ENV = import.meta.env;
 
-  const { VITE_GLOB_APP_TITLE, VITE_GLOB_APP_SHORT_NAME } = ENV;
+  const { VITE_GLOB_APP_TITLE, VITE_GLOB_APP_SHORT_NAME, VITE_GLOB_API_URL } = ENV;
 
   if (!/^[a-zA-Z\_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
     warn(
@@ -25,6 +25,7 @@ export function getAppEnvConfig() {
   return {
     VITE_GLOB_APP_TITLE,
     VITE_GLOB_APP_SHORT_NAME,
+    VITE_GLOB_API_URL,
   };
 }
 
