@@ -2,21 +2,21 @@
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
 import type { AxiosResponse } from 'axios';
-import type { RequestOptions, Result } from '/#/axios';
+import type { RequestOptions, Result } from '#/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
-import { getAppEnvConfig } from '/@/utils/env';
-import { useMessage } from '/@/hooks/web/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum';
-import { isString } from '/@/utils/is';
-// import { getToken } from '/@/utils/auth';
-import { setObjToUrlParams, deepMerge } from '/@/utils';
+import { getAppEnvConfig } from '@/utils/env';
+import { useMessage } from '@/hooks/web/useMessage';
+import { RequestEnum, ResultEnum, ContentTypeEnum } from '@/enums/httpEnum';
+import { isString } from '@/utils/is';
+// import { getToken } from '@/utils/auth';
+import { setObjToUrlParams, deepMerge } from '@/utils';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { AxiosRetry } from './axiosRetry';
-import { useUserStoreWithOut } from '/@/store/modules/user';
-import { TOKEN_KEY } from '/@/enums/cacheEnum';
-import { storage } from '/@/utils/storage';
+import { useUserStoreWithOut } from '@/store/modules/user';
+import { TOKEN_KEY } from '@/enums/cacheEnum';
+import { storage } from '@/utils/storage';
 
 const { VITE_GLOB_API_URL } = getAppEnvConfig();
 // Take global configuration

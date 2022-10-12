@@ -16,14 +16,14 @@
 <script lang="ts" setup>
   import { ref, reactive, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { PageEnum } from '/@/enums/pageEnum';
+  import { PageEnum } from '@/enums/pageEnum';
   import MenuItem from './menuItem.vue';
-  import { getMenus, getShallowMenus } from '/@/router/menus';
-  import { usePermissionStoreWithOut } from '/@/store/modules/permission';
-  import { useGo } from '/@/hooks/web/usePage';
-  import { openWindow } from '/@/utils';
-  import { isUrl } from '/@/utils/is';
-  import { useMenuSetting } from '/@/hooks/setting/useAppSetting';
+  import { getMenus, getShallowMenus } from '@/router/menus';
+  import { usePermissionStoreWithOut } from '@/store/modules/permission';
+  import { useGo } from '@/hooks/web/usePage';
+  import { openWindow } from '@/utils';
+  import { isUrl } from '@/utils/is';
+  import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   const go = useGo();
   const { getSplit } = useMenuSetting();

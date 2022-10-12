@@ -1,25 +1,25 @@
-import type { AppRouteRecordRaw, Menu } from '/@/router/types';
+import type { AppRouteRecordRaw, Menu } from '@/router/types';
 
 import { defineStore } from 'pinia';
-import { store } from '/@/store';
+import { store } from '@/store';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
-import { transformObjToRoute, flatMultiLevelRoutes } from '/@/router/helper/routeHelper';
-import { transformRouteToMenu } from '/@/router/helper/menuHelper';
+import { transformObjToRoute, flatMultiLevelRoutes } from '@/router/helper/routeHelper';
+import { transformRouteToMenu } from '@/router/helper/menuHelper';
 
-import { PageEnum } from '/@/enums/pageEnum';
-import { PermissionModeEnum } from '/@/enums/appEnum';
+import { PageEnum } from '@/enums/pageEnum';
+import { PermissionModeEnum } from '@/enums/appEnum';
 
-import { asyncRoutes } from '/@/router/routes';
-import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
+import { asyncRoutes } from '@/router/routes';
+import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
 
-import { filter } from '/@/utils/helper/treeHelper';
+import { filter } from '@/utils/helper/treeHelper';
 
-import { getMenuList } from '/@/api/system/menu';
-import { getPermCode } from '/@/api/system/user';
+import { getMenuList } from '@/api/system/menu';
+import { getPermCode } from '@/api/system/user';
 
-import { useMessage } from '/@/hooks/web/useMessage';
+import { useMessage } from '@/hooks/web/useMessage';
 
 interface PermissionState {
   // Permission code list

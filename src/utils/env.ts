@@ -1,4 +1,4 @@
-import { warn } from '/@/utils/log';
+import { warn } from '@/utils/log';
 import pkg from '../../package.json';
 
 export function getCommonStoragePrefix() {

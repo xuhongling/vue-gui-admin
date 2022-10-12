@@ -1,4 +1,4 @@
-import type { MenuModule } from '/@/router/types';
+import type { MenuModule } from '@/router/types';
 
 const menu: MenuModule = {
   orderNo: 100,

@@ -27,8 +27,8 @@
   import { type PropType, computed } from 'vue';
   import type { RouteRecordRaw } from 'vue-router';
   import { defineComponent } from 'vue';
-  import Icon from '/@/components/Icon/index';
-  import { useMenuSetting } from '/@/hooks/setting/useAppSetting';
+  import Icon from '@/components/Icon/index';
+  import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   export default defineComponent({
     name: 'LayoutMenuItem',

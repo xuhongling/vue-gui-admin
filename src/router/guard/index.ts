@@ -1,6 +1,6 @@
 import type { Router, RouteLocationNormalized } from 'vue-router';
 import nProgress from 'nprogress';
-import { AxiosCanceler } from '/@/utils/http/axios/axiosCancel';
+import { AxiosCanceler } from '@/utils/http/axios/axiosCancel';
 import { setRouteChange } from './routeChange';
 import { createPermissionGuard } from './permissionGuard';
 import { createStateGuard } from './stateGuard';

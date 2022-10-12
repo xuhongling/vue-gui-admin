@@ -26,7 +26,7 @@
 <script lang="ts" setup>
   import { reactive } from 'vue';
   import { notification } from 'ant-design-vue';
-  import { useUserStoreWithOut } from '/@/store/modules/user';
+  import { useUserStoreWithOut } from '@/store/modules/user';
 
   interface FormState {
     username: string;

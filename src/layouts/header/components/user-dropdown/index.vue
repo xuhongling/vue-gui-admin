@@ -20,10 +20,10 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { Dropdown, Menu } from 'ant-design-vue';
-  import { useUserStoreWithOut } from '/@/store/modules/user';
-  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
+  import { useUserStoreWithOut } from '@/store/modules/user';
+  import { createAsyncComponent } from '@/utils/factory/createAsyncComponent';
 
-  import headerImg from '/@/assets/images/user.jpg';
+  import headerImg from '@/assets/images/user.jpg';
   const MenuItem = createAsyncComponent(() => import('./DropMenuItem.vue'));
 
   const userStore = useUserStoreWithOut();

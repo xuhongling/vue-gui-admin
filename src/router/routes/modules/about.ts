@@ -1,5 +1,5 @@
-import type { AppRouteModule } from '/@/router/types';
-import { LAYOUT } from '/@/router/constant';
+import type { AppRouteModule } from '@/router/types';
+import { LAYOUT } from '@/router/constant';
 
 const about: AppRouteModule = {
   path: '/about',
@@ -16,7 +16,7 @@ const about: AppRouteModule = {
     {
       path: 'index',
       name: 'about',
-      component: () => import('/@/views/about/index.vue'),
+      component: () => import('@/views/about/index.vue'),
       meta: {
         title: '关于',
         icon: 'ant-design:read-outlined',

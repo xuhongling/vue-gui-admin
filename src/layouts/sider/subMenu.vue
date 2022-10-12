@@ -16,15 +16,15 @@
 <script lang="ts" setup>
   import { ref, reactive, watch, unref } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { PageEnum } from '/@/enums/pageEnum';
+  import { PageEnum } from '@/enums/pageEnum';
   import MenuItem from './subMenuItem.vue';
   import { useThrottleFn } from '@vueuse/core';
-  import { getChildrenMenus, getCurrentParentPath, getMenus, getShallowMenus } from '/@/router/menus';
-  import { usePermissionStoreWithOut } from '/@/store/modules/permission';
-  import { useGo } from '/@/hooks/web/usePage';
-  import { openWindow } from '/@/utils';
-  import { isUrl } from '/@/utils/is';
-  import { useMenuSetting } from '/@/hooks/setting/useAppSetting';
+  import { getChildrenMenus, getCurrentParentPath, getMenus, getShallowMenus } from '@/router/menus';
+  import { usePermissionStoreWithOut } from '@/store/modules/permission';
+  import { useGo } from '@/hooks/web/usePage';
+  import { openWindow } from '@/utils';
+  import { isUrl } from '@/utils/is';
+  import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   const go = useGo();
   const { setMenuSetting } = useMenuSetting();

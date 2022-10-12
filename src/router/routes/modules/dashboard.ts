@@ -1,6 +1,6 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from '@/router/types';
 
-import { LAYOUT } from '/@/router/constant';
+import { LAYOUT } from '@/router/constant';
 
 const dashboard: AppRouteModule = {
   path: '/dashboard',
@@ -16,7 +16,7 @@ const dashboard: AppRouteModule = {
     {
       path: 'analysis',
       name: 'Analysis',
-      component: () => import('/@/views/dashboard/analysis/index.vue'),
+      component: () => import('@/views/dashboard/analysis/index.vue'),
       meta: {
         icon: 'ion:home-outline',
         title: '分析页',
@@ -25,7 +25,7 @@ const dashboard: AppRouteModule = {
     {
       path: 'workbench',
       name: 'Workbench',
-      component: () => import('/@/views/dashboard/workbench/index.vue'),
+      component: () => import('@/views/dashboard/workbench/index.vue'),
       meta: {
         icon: 'ion:home-outline',
         title: '工作台',

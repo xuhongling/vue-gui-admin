@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { store } from '/@/store';
+import { store } from '@/store';
 interface KeepAliveState {
   /** 需要缓存的路由组件名称列表 */
   list: string[];

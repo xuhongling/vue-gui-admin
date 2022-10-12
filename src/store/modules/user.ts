@@ -1,18 +1,18 @@
-import type { UserInfo } from '/#/store';
+import type { UserInfo } from '#/store';
 import { defineStore } from 'pinia';
-import { store } from '/@/store';
-import { PageEnum } from '/@/enums/pageEnum';
-import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
-import { storage } from '/@/utils/storage';
-import { resetRouter } from '/@/router';
-import { loginApi } from '/@/api/system/user';
-import { GetUserInfoModel, LoginParams } from '/@/api/system/model/userModel';
-import { useMessage } from '/@/hooks/web/useMessage';
-import { router } from '/@/router';
-import { usePermissionStore } from '/@/store/modules/permission';
+import { store } from '@/store';
+import { PageEnum } from '@/enums/pageEnum';
+import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@/enums/cacheEnum';
+import { storage } from '@/utils/storage';
+import { resetRouter } from '@/router';
+import { loginApi } from '@/api/system/user';
+import { GetUserInfoModel, LoginParams } from '@/api/system/model/userModel';
+import { useMessage } from '@/hooks/web/useMessage';
+import { router } from '@/router';
+import { usePermissionStore } from '@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
-import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
-import { isArray } from '/@/utils/is';
+import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
+import { isArray } from '@/utils/is';
 import { h } from 'vue';
 
 interface UserState {

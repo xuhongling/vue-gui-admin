@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { useGo } from '/@/hooks/web/usePage';
-  import { PageEnum } from '/@/enums/pageEnum';
-  import { useUserStoreWithOut } from '/@/store/modules/user';
+  import { useGo } from '@/hooks/web/usePage';
+  import { PageEnum } from '@/enums/pageEnum';
+  import { useUserStoreWithOut } from '@/store/modules/user';
   import { Layout } from 'ant-design-vue';
   import { UserDropDown } from './components';
   import LayoutMenu from '../menu/index.vue';

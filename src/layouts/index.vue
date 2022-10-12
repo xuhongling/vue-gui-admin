@@ -26,7 +26,7 @@
   import LayoutHeader from './header/index.vue';
   import LayoutSideBar from './sider/index.vue';
   import MultipleTabs from './tabs/index.vue';
-  import { useMenuSetting } from '/@/hooks/setting/useAppSetting';
+  import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   const { getCollapsed, getSplit } = useMenuSetting();
   const collapsed = ref<boolean>(false);

@@ -1,13 +1,13 @@
-import type { ProjectConfig, MenuSetting } from '/#/config';
+import type { ProjectConfig, MenuSetting } from '#/config';
 
 import { defineStore } from 'pinia';
-import { store } from '/@/store';
+import { store } from '@/store';
 
-import { PermissionModeEnum } from '/@/enums/appEnum';
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '/@/enums/cacheEnum';
-import { resetRouter } from '/@/router';
-import { storage } from '/@/utils/storage';
-import { deepMerge } from '/@/utils';
+import { PermissionModeEnum } from '@/enums/appEnum';
+import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@/enums/cacheEnum';
+import { resetRouter } from '@/router';
+import { storage } from '@/utils/storage';
+import { deepMerge } from '@/utils';
 
 // menu theme enum
 export enum ThemeEnum {

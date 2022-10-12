@@ -1,7 +1,7 @@
-import type { MenuSetting } from '/#/config';
+import type { MenuSetting } from '#/config';
 
 import { computed } from 'vue';
-import { useAppStore, ThemeEnum } from '/@/store/modules/app';
+import { useAppStore, ThemeEnum } from '@/store/modules/app';
 
 // 项目配置
 export function useRootSetting() {

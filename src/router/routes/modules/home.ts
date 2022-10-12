@@ -1,6 +1,6 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from '@/router/types';
 
-import { LAYOUT } from '/@/router/constant';
+import { LAYOUT } from '@/router/constant';
 
 const home: AppRouteModule = {
   path: '/home',
@@ -17,7 +17,7 @@ const home: AppRouteModule = {
     {
       path: 'index',
       name: 'HomePage',
-      component: () => import('/@/views/home/index.vue'),
+      component: () => import('@/views/home/index.vue'),
       meta: {
         title: '首页',
         hideMenu: true,

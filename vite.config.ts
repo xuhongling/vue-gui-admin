@@ -36,18 +36,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     plugins: [vue(), vueJsx(), configSvgIconsPlugin(isBuild), windiCSS()],
     resolve: {
       extensions: ['.js', '.ts', '.tsx', '.vue', '.json', '.css', '.less'],
-      alias: [
-        // /@/xxxx => src/xxxx
-        {
-          find: /\/@\//,
-          replacement: pathResolve('src') + '/',
-        },
-        // /#/xxxx => types/xxxx
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/',
-        },
-      ],
+      alias: {
+        '@': `${resolve(root, 'src')}`,
+        '#': `${resolve(root, 'types')}`,
+        vue: 'vue/dist/vue.esm-bundler.js',
+      },
     },
     css: {
       preprocessorOptions: {

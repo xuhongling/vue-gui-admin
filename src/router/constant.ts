@@ -6,12 +6,12 @@ export const PARENT_LAYOUT_NAME = 'ParentLayout';
 
 export const PAGE_NOT_FOUND_NAME = 'PageNotFound';
 
-export const EXCEPTION_COMPONENT = () => import('/@/views/system/exception/Exception.vue');
+export const EXCEPTION_COMPONENT = () => import('@/views/system/exception/Exception.vue');
 
 /**
  * @description: default layout
  */
-export const LAYOUT = () => import('/@/layouts/index.vue');
+export const LAYOUT = () => import('@/layouts/index.vue');
 
 /**
  * @description: parent-layout

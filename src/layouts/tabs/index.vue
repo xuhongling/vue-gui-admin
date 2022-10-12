@@ -107,13 +107,13 @@
     MinusOutlined,
   } from '@ant-design/icons-vue';
   import { Dropdown, Tabs, message, Menu } from 'ant-design-vue';
-  import { Icon } from '/@/components/Icon';
+  import { Icon } from '@/components/Icon';
   import type { RouteLocation } from 'vue-router';
-  import { storage } from '/@/utils/storage';
-  import { TABS_ROUTES } from '/@/enums/cacheEnum';
-  import { useMultipleTabWithOutStore, blackList } from '/@/store/modules/multipleTab';
-  import { useKeepAliveStoreWithOut } from '/@/store/modules/keepAlive';
-  import { REDIRECT_NAME } from '/@/router/constant';
+  import { storage } from '@/utils/storage';
+  import { TABS_ROUTES } from '@/enums/cacheEnum';
+  import { useMultipleTabWithOutStore, blackList } from '@/store/modules/multipleTab';
+  import { useKeepAliveStoreWithOut } from '@/store/modules/keepAlive';
+  import { REDIRECT_NAME } from '@/router/constant';
 
   type RouteItem = Omit<RouteLocation, 'matched' | 'redirectedFrom'>;
 

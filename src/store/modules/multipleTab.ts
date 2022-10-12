@@ -1,10 +1,10 @@
 import { type RouteLocationNormalized } from 'vue-router';
 import { defineStore } from 'pinia';
 import { useKeepAliveStore } from './keepAlive';
-import { store } from '/@/store';
-import { TABS_ROUTES } from '/@/enums/cacheEnum';
-import { router } from '/@/router/index';
-import { LOGIN_NAME, REDIRECT_NAME, PAGE_NOT_FOUND_NAME } from '/@/router/constant';
+import { store } from '@/store';
+import { TABS_ROUTES } from '@/enums/cacheEnum';
+import { router } from '@/router/index';
+import { LOGIN_NAME, REDIRECT_NAME, PAGE_NOT_FOUND_NAME } from '@/router/constant';
 
 interface TabsViewState {
   /** 标签页 */

@@ -1,7 +1,7 @@
-import type { ErrorMessageMode } from '/#/axios';
-import { useMessage } from '/@/hooks/web/useMessage';
-// import router from '/@/router';
-// import { PageEnum } from '/@/enums/pageEnum';
+import type { ErrorMessageMode } from '#/axios';
+import { useMessage } from '@/hooks/web/useMessage';
+// import router from '@/router';
+// import { PageEnum } from '@/enums/pageEnum';
 
 const { createMessage, createErrorModal } = useMessage();
 const error = createMessage.error!;
