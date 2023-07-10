@@ -1,13 +1,12 @@
 import { AppRouteModule } from '@/router/types';
 import type { MenuModule, Menu, AppRouteRecordRaw } from '@/router/types';
-import { findPath, treeMap } from '@/utils/helper/treeHelper';
-import { cloneDeep } from 'lodash-es';
-import { isUrl } from '@/utils/is';
+// import { cloneDeep } from 'lodash-es';
+import { isUrl, findParentPath, mapTree, cloneDeep } from '@gui-pkg/utils';
 import { RouteParams } from 'vue-router';
 import { toRaw } from 'vue';
 
 export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
-  const menuList = findPath(treeData, (n) => n.path === path) as Menu[];
+  const menuList = findParentPath(treeData, (n) => n.path === path) as Menu[];
   return (menuList || []).map((item) => item.path);
 }
 
@@ -61,7 +60,7 @@ export function transformRouteToMenu(routeModList: AppRouteModule[], routerMappi
     }
   });
   // 提取树指定结构
-  const list = treeMap(routeList, {
+  const list = mapTree(routeList, {
     conversion: (node: AppRouteRecordRaw) => {
       const { meta: { title, hideMenu = false } = {} } = node;
 

@@ -1,17 +1,13 @@
-import type { UserConfig, ConfigEnv } from 'vite';
+import type { UserConfig, ConfigEnv, ProxyOptions } from 'vite';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import windiCSS from 'vite-plugin-windicss';
 import path from 'path';
-
 import { loadEnv } from 'vite';
 import { resolve } from 'path';
-
+import { viteMockServe } from 'vite-plugin-mock'
+import dayjs from 'dayjs';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-
-function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir);
-}
+import { ViteEnv }  from '#/config.d';
 
 export function configSvgIconsPlugin(isBuild: boolean) {
   const svgIconsPlugin = createSvgIconsPlugin({
@@ -23,17 +19,78 @@ export function configSvgIconsPlugin(isBuild: boolean) {
   return svgIconsPlugin;
 }
 
+
+export function configMockPlugin(isBuild: boolean) {
+  return viteMockServe({
+    ignore: /^\_/,
+    mockPath: 'mock',
+    localEnabled: !isBuild,
+    prodEnabled: isBuild,
+  })
+}
+
+export function resolveProxy(proxyList: [string, string][] = []) {
+  const proxy: Record<string, ProxyOptions> = {}
+  for (const [prefix, target] of proxyList) {
+    const isHttps = /^https:\/\//.test(target)
+    // https://github.com/http-party/node-http-proxy#options
+    proxy[prefix] = {
+      target: target,
+      changeOrigin: true,
+      ws: true,
+      rewrite: (path) => path.replace(new RegExp(`^${prefix}`), ''),
+      // https is require secure=false
+      ...(isHttps ? { secure: false } : {}),
+    }
+  }
+  return proxy
+}
+
+// Read all environment variable configuration files to process.env
+export function wrapperEnv(envConf: Record<string, any>): ViteEnv {
+  const viteEnv: Partial<ViteEnv> = {}
+
+  for (const key of Object.keys(envConf)) {
+    let realname = envConf[key].replace(/\\n/g, '\n')
+    realname =
+      realname === 'true' ? true : realname === 'false' ? false : realname
+
+    if (key === 'VITE_PROXY' && realname) {
+      try {
+        realname = JSON.parse(realname.replace(/'/g, '"'))
+      } catch (error) {
+        realname = ''
+      }
+    }
+
+    viteEnv[key] = realname
+    if (typeof realname === 'string') {
+      process.env[key] = realname
+    } else if (typeof realname === 'object') {
+      process.env[key] = JSON.stringify(realname)
+    }
+  }
+  return viteEnv as ViteEnv
+}
 // vite config
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
-  const viteEnv = loadEnv(mode, root);
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE } = viteEnv;
-  const primary = '#30a0f8';
+  const env = loadEnv(mode, root);
+  const viteEnv = wrapperEnv(env)
+  const {
+    VITE_PUBLIC_PATH,
+    VITE_PROXY,
+    VITE_PORT,
+    VITE_USE_MOCK,
+    VITE_DROP_CONSOLE,
+    VITE_USE_HTTPS,
+  } = viteEnv;
+  const primaryColor = '#30a0f8';
   const isBuild = command === 'build';
 
   return {
     base: VITE_PUBLIC_PATH,
-    plugins: [vue(), vueJsx(), configSvgIconsPlugin(isBuild), windiCSS()],
+    plugins: [vue(), vueJsx(), configSvgIconsPlugin(isBuild), (VITE_USE_MOCK && configMockPlugin(isBuild))],
     resolve: {
       extensions: ['.js', '.ts', '.tsx', '.vue', '.json', '.css', '.less'],
       alias: {
@@ -42,64 +99,62 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         vue: 'vue/dist/vue.esm-bundler.js',
       },
     },
+    define: {
+      __VITE_USE_MOCK__: VITE_USE_MOCK,
+      // Suppress vue-i18-next warning
+      __INTLIFY_PROD_DEVTOOLS__: false,
+      __APP_INFO__: JSON.stringify({
+        lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+      }),
+    },
     css: {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
           modifyVars: {
-            hack: `true; @import (reference) "${resolve('src/design/config.less')}";`,
-            'primary-color': primary,
-            'info-color': primary,
-            'processing-color': primary,
+            'primary-color': primaryColor,
+            'border-color-base': 'hsv(0, 0, 85%)',
+            'font-size-base': '14px',
+            'border-radius-base': '2px',
+            'text-color': 'rgba(0,0,0,0.85)',
+            'modal-mask-bg': 'rgba(0,0,0,0.45)',
+            'layout-body-background': '#f0f2f5',
+            'background-color-light': 'hsv(0, 0, 98%)',
+            'text-color-secondary': 'rgba(0,0,0,0.45)',
+            'component-background': '#fff',
+            'info-color': primaryColor,
+            'processing-color': primaryColor,
             'success-color': '#55D187', //  Success color
             'error-color': '#ED6F6F', //  False color
             'warning-color': '#EFBD47', //   Warning color
-            //'border-color-base': '#EEEEEE',
-            'font-size-base': '14px', //  Main font size
-            'border-radius-base': '2px', //  Component/float fillet
-            'link-color': primary, //   Link color
+            'link-color': primaryColor, //   Link color
             'app-content-background': '#fafafa', //   Link color
-            'text-color-base': '#333',
-            'component-background': '#fff',
-            'border-color-base': '#303030',
+            'item-hover-bg': '#f5f5f5',
           },
         },
       },
     },
     server: {
-      host: '0.0.0.0',
-      port: Number(VITE_PORT),
+      https: VITE_USE_HTTPS,
       open: true,
-      proxy: {
-        '/api': {
-          target: 'http://47.109.35.43:9999',
-          changeOrigin: true,
-          ws: false,
-        },
-        '/platform': {
-          target: 'http://47.109.35.43:9999',
-          changeOrigin: true,
-        },
-      },
+      host: true,
+      port: Number(VITE_PORT),
+      proxy: !VITE_USE_HTTPS ? resolveProxy(VITE_PROXY) : undefined,
     },
     build: {
       target: 'es2020',
       cssTarget: 'chrome80',
       outDir: 'dist',
-      // minify: 'terser',
-      /**
-       * 当 minify=“minify:'terser'” 解开注释
-       * Uncomment when minify="minify:'terser'"
-       */
-      // terserOptions: {
-      //   compress: {
-      //     keep_infinity: true,
-      //     drop_console: VITE_DROP_CONSOLE,
-      //   },
-      // },
-      // Turning off brotliSize display can slightly reduce packaging time
-      brotliSize: false,
-      chunkSizeWarningLimit: 2000,
+      reportCompressedSize: false,
+      chunkSizeWarningLimit: 2048,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vue: ['vue', 'pinia', 'vue-router'],
+            mockjs: ['mockjs'],
+          },
+        },
+      },
     },
     esbuild: {
       pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],

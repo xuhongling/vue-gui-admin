@@ -1,6 +1,6 @@
 import type { Router, RouteLocationNormalized } from 'vue-router';
 import nProgress from 'nprogress';
-import { AxiosCanceler } from '@/utils/http/axios/axiosCancel';
+import { RequestCanceler } from '@gui-pkg/request';
 import { setRouteChange } from './routeChange';
 import { createPermissionGuard } from './permissionGuard';
 import { createStateGuard } from './stateGuard';
@@ -41,7 +41,7 @@ function createPageGuard(router: Router) {
  * @param router
  */
 function createHttpGuard(router: Router) {
-  let axiosCanceler: Nullable<AxiosCanceler>;
+  let axiosCanceler: Nullable<RequestCanceler>;
   router.beforeEach(async () => {
     // Switching the route will delete the previous request
     axiosCanceler?.removeAllPending();

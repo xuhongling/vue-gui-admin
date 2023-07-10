@@ -1,8 +1,8 @@
 import { type RouteLocationNormalized } from 'vue-router';
 import { defineStore } from 'pinia';
 import { useKeepAliveStore } from './keepAlive';
-import { store } from '@/store';
-import { TABS_ROUTES } from '@/enums/cacheEnum';
+import { pinia } from '@/store';
+import { TABS_ROUTES } from '@gui-pkg/enums';
 import { router } from '@/router/index';
 import { LOGIN_NAME, REDIRECT_NAME, PAGE_NOT_FOUND_NAME } from '@/router/constant';
 
@@ -109,5 +109,5 @@ export const useMultipleTabStore = defineStore({
 
 // 在组件setup函数外使用
 export function useMultipleTabWithOutStore() {
-  return useMultipleTabStore(store);
+  return useMultipleTabStore(pinia);
 }

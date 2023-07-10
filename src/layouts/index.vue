@@ -30,6 +30,7 @@
 
   const { getCollapsed, getSplit } = useMenuSetting();
   const collapsed = ref<boolean>(false);
+
   // 自定义侧边栏菜单收缩和展开时的宽度
   const asiderWidth = computed(() => (collapsed.value ? 80 : 220));
 </script>

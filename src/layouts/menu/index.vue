@@ -16,13 +16,12 @@
 <script lang="ts" setup>
   import { ref, reactive, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { PageEnum } from '@/enums/pageEnum';
+  import { PageEnum } from '@gui-pkg/enums';
   import MenuItem from './menuItem.vue';
-  import { getMenus, getShallowMenus } from '@/router/menus';
+  import { getMenus } from '@/router/menus';
   import { usePermissionStoreWithOut } from '@/store/modules/permission';
   import { useGo } from '@/hooks/web/usePage';
-  import { openWindow } from '@/utils';
-  import { isUrl } from '@/utils/is';
+  import { openWindow, isUrl } from '@gui-pkg/utils';
   import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   const go = useGo();
@@ -126,15 +125,17 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .layout-menu {
     width: 100%;
-    height: @header-height;
+    height: var(--header-height);
     line-height: unset;
     overflow: auto;
+    user-select: none;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
     .ant-menu {
-      line-height: @header-height;
+      background: var(--header-background);
+      line-height: var(--header-height);
       border-bottom: none;
       user-select: none;
     }

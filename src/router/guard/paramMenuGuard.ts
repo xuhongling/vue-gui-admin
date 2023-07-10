@@ -1,7 +1,7 @@
 import type { Router } from 'vue-router';
 import { configureDynamicParamsMenu } from '../helper/menuHelper';
 import { Menu } from '../types';
-import { PermissionModeEnum } from '@/enums/appEnum';
+import { PermissionModeEnum } from '@gui-pkg/enums';
 import { useAppStoreWithOut } from '@/store/modules/app';
 
 import { usePermissionStoreWithOut } from '@/store/modules/permission';

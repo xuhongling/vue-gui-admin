@@ -2,7 +2,7 @@
   <Layout.Header class="layout-header">
     <div class="layout-header-logo" @click="goHome">
       <img src="../../assets/logo.png" alt="" />
-      <h2 class="ml-2 truncate md:opacity-100 title">{{ projectName }}</h2>
+      <h2 class="ml-1 truncate md:opacity-100 title">{{ projectName }}</h2>
     </div>
     <div class="layout-header-menu">
       <LayoutMenu :collapsed="props.collapsed" />
@@ -16,10 +16,10 @@
 
 <script lang="ts" setup>
   import { useGo } from '@/hooks/web/usePage';
-  import { PageEnum } from '@/enums/pageEnum';
+  import { PageEnum } from '@gui-pkg/enums';
   import { useUserStoreWithOut } from '@/store/modules/user';
   import { Layout } from 'ant-design-vue';
-  import { UserDropDown } from './components';
+  import UserDropDown from './user-dropdown/index.vue'
   import LayoutMenu from '../menu/index.vue';
 
   const projectName = import.meta.env.VITE_GLOB_APP_TITLE;
@@ -39,9 +39,9 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .layout-header {
     width: 100%;
-    height: @header-height;
+    height: var(--header-height);
     padding: 0 20px;
-    background: #fff;
+    background: var(--header-background);
     box-shadow: 0px 2px 10px 0px rgba(115, 115, 115, 0.2);
     display: flex;
     align-items: center;
@@ -52,12 +52,11 @@
       align-items: center;
       cursor: pointer;
       img {
-        width: 46px;
-        height: 46px;
+        width: 32px;
       }
       h2.title {
         font-size: 18px;
-        color: @primary-color;
+        color: var(--primary-color);
         font-weight: bold;
       }
     }

@@ -4,10 +4,9 @@ import type { RouteRecordNormalized } from 'vue-router';
 import { useAppStoreWithOut } from '@/store/modules/app';
 import { usePermissionStoreWithOut } from '@/store/modules/permission';
 import { transformMenuModule, getAllParentPath } from '@/router/helper/menuHelper';
-import { filter } from '@/utils/helper/treeHelper';
-import { isUrl } from '@/utils/is';
+import { isUrl, filterTree } from '@gui-pkg/utils';
 import { router } from '@/router';
-import { PermissionModeEnum } from '@/enums/appEnum';
+import { PermissionModeEnum } from '@gui-pkg/enums';
 import { pathToRegexp } from 'path-to-regexp';
 
 const modules: any = import.meta.globEager('./modules/**/*.ts');
@@ -28,6 +27,7 @@ const getPermissionMode = () => {
   const appStore = useAppStoreWithOut();
   return appStore.getProjectConfig.permissionMode;
 };
+
 const isBackMode = () => {
   return getPermissionMode() === PermissionModeEnum.BACK;
 };
@@ -70,7 +70,7 @@ export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus();
   if (isRoleMode()) {
     const routes = router.getRoutes();
-    return filter(menus, basicFilter(routes));
+    return filterTree(menus, basicFilter(routes));
   }
   return menus;
 };
@@ -101,7 +101,7 @@ export async function getChildrenMenus(parentPath: string) {
   }
   if (isRoleMode()) {
     const routes = router.getRoutes();
-    return filter(parent.children, basicFilter(routes));
+    return filterTree(parent.children, basicFilter(routes));
   }
   return parent.children;
 }

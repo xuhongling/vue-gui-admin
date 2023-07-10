@@ -2,7 +2,7 @@ import type { AppRouteRecordRaw, AppRouteModule } from '@/router/types';
 
 import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '@/router/routes/basic';
 
-import { PageEnum } from '@/enums/pageEnum';
+import { PageEnum } from '@gui-pkg/enums';
 
 // import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
 const modules: any = import.meta.globEager('./modules/**/*.ts');
@@ -30,7 +30,7 @@ export const RootRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('@/views/system/login/index.vue'),
+  component: () => import('@/views/sys/login/index.vue'),
   meta: {
     title: '登录',
   },

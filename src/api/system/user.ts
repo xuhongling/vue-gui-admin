@@ -1,34 +1,36 @@
-import { defHttp } from '@/utils/http/axios';
+import { request } from '@gui-pkg/request';
 import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
 
 enum Api {
-  Login = '/platform/sys/login',
+  Login = '/thinkwater/api/system/login',
   GetUserInfo = '/getUserInfo',
   GetPermCode = '/getPermCode',
 }
+
+const requestOptions = {
+  withToken: false,
+  joinTime: false,
+};
 
 /**
  * @description: user login api
  */
 export function loginApi(params: LoginParams) {
-  return defHttp.post<LoginResultModel>({
-    url: Api.Login,
-    params,
-  });
+  return request.post<LoginResultModel>({url: Api.Login, params }, requestOptions);
 }
 
 /**
  * @description: getUserInfo
  */
 export function getUserInfo() {
-  return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo });
+  return request.get<GetUserInfoModel>({ url: Api.GetUserInfo });
 }
 
 export function getPermCode() {
-  return defHttp.get<string[]>({ url: Api.GetPermCode });
+  return request.get<string[]>({ url: Api.GetPermCode });
 }
 
 // 获取用户Token
 export function getUserToken(userId) {
-  return defHttp.post<GetUserInfoModel>({ url: `/platform/sys/user/${userId}/token` });
+  return request.post<GetUserInfoModel>({ url: `/platform/sys/user/${userId}/token` });
 }

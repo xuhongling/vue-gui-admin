@@ -1,18 +1,17 @@
-import type { UserInfo } from '#/store';
+import type { UserInfo } from '@gui-pkg/types';
+import { isArray } from '@gui-pkg/utils';
+import { PageEnum, ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@gui-pkg/enums';
 import { defineStore } from 'pinia';
-import { store } from '@/store';
-import { PageEnum } from '@/enums/pageEnum';
-import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@/enums/cacheEnum';
-import { storage } from '@/utils/storage';
+import { pinia } from '@/store';
+import { router } from '@/router';
 import { resetRouter } from '@/router';
 import { loginApi } from '@/api/system/user';
 import { GetUserInfoModel, LoginParams } from '@/api/system/model/userModel';
 import { useMessage } from '@/hooks/web/useMessage';
-import { router } from '@/router';
 import { usePermissionStore } from '@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
-import { isArray } from '@/utils/is';
+import { useWebStorage } from '@/hooks/web/useWebStorage';
 import { h } from 'vue';
 
 interface UserState {
@@ -22,6 +21,8 @@ interface UserState {
   sessionTimeout?: boolean;
   lastUpdateTime: number;
 }
+
+const { getWebStorage, setWebStorage, clearAllWebStorage } = useWebStorage();
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -39,13 +40,13 @@ export const useUserStore = defineStore({
   }),
   getters: {
     getUserInfo(): UserInfo {
-      return this.userInfo || storage.getLocal<UserInfo>(USER_INFO_KEY) || {};
+      return this.userInfo || getWebStorage<UserInfo>(USER_INFO_KEY) || ({} as UserInfo);
     },
     getToken(): string {
-      return this.token || storage.getLocal<string>(TOKEN_KEY);
+      return this.token as string || getWebStorage<string>(TOKEN_KEY);
     },
     getRoleList(): string[] {
-      return this.roleList.length > 0 ? this.roleList : storage.getLocal<string[]>(ROLES_KEY);
+      return this.roleList.length > 0 ? this.roleList : getWebStorage<string[]>(ROLES_KEY);
     },
     getSessionTimeout(): boolean {
       return !!this.sessionTimeout;
@@ -59,16 +60,16 @@ export const useUserStore = defineStore({
     setToken(token: string) {
       this.token = token ? token : '';
       const ex = 7 * 24 * 60 * 60 * 1000;
-      storage.setLocal(TOKEN_KEY, this.token, ex);
+      setWebStorage(TOKEN_KEY, this.token, ex);
     },
     setRoleList(roleList: string[]) {
       this.roleList = roleList;
-      storage.setLocal(ROLES_KEY, roleList);
+      setWebStorage(ROLES_KEY, roleList);
     },
     setUserInfo(info: UserInfo | null) {
       this.userInfo = info;
       this.lastUpdateTime = new Date().getTime();
-      storage.setLocal(USER_INFO_KEY, info);
+      setWebStorage(USER_INFO_KEY, info);
     },
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;
@@ -79,7 +80,7 @@ export const useUserStore = defineStore({
       this.token = '';
       this.roleList = [];
       this.sessionTimeout = false;
-      storage.clearAll();
+      clearAllWebStorage();
     },
     /**登录 */
     async login(
@@ -91,7 +92,8 @@ export const useUserStore = defineStore({
         const { goHome = true, ...loginParams } = params;
         console.log(loginParams, 'loginParams');
         // 登录接口，根据项目自定
-        // const data = await loginApi(loginParams);
+        /*const data2 = await loginApi(loginParams);
+        console.log(data2, 'data2data2data2');*/
         const data = {
           token:
             'eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiMywtMSwxNTMyMTc5NjI2MTQ1NjE1ODczIiwibW9iaWxlIjoiMTc2MjE2Mzc5MTIiLCJleHAiOjE2NTgzOTU2NjgsInVzZXJJZCI6IjEiLCJpYXQiOjE2NTgzOTIwNjgsInJlYWxuYW1lIjoi6LaF57qn566h55CG5ZGYIiwidXNlcm5hbWUiOiJhZG1pbiJ9.aQIkethHjfkeeQsInoDfxCsKOFfJENlFht7imf9ImUQ',
@@ -185,5 +187,5 @@ export const useUserStore = defineStore({
 
 // 在组件setup函数外使用
 export function useUserStoreWithOut() {
-  return useUserStore(store);
+  return useUserStore(pinia);
 }

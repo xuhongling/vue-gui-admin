@@ -1,6 +1,6 @@
 import type { RouteLocationRaw, Router } from 'vue-router';
 
-import { PageEnum } from '@/enums/pageEnum';
+import { PageEnum } from '@gui-pkg/enums';
 import { unref } from 'vue';
 
 import { useRouter } from 'vue-router';

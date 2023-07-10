@@ -1,29 +1,27 @@
-// import 'virtual:windi-base.css';
-import 'virtual:windi-components.css';
-import 'virtual:windi-utilities.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
+import { initApplication } from './init-application';
 import { router, setupRouter } from '@/router';
 import { setupRouterGuard } from '@/router/guard';
-import { createPinia } from 'pinia';
-
-// Ant design components
 import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.variable.css';
-
-import '@/design/index.less';
+import { pinia } from '@/store';
+import 'ant-design-vue/dist/antd.less';
+import '@gui-pkg/styles';
 
 async function bootstrap() {
   const app = createApp(App);
-  const pinia = createPinia();
-
-  // 注册Antd全局组件
-  app.use(Antd);
 
   // 解决 injection "symbol(pinia)" not found 报错信息问题
   app.use(pinia);
+
+  // ! Need to pay attention to the timing of execution
+  // ! 需要注意调用时机
+  await initApplication();
+
+  // 全局完整注册 Antd 组件
+  app.use(Antd)
 
   // 配置路由
   setupRouter(app);
@@ -32,5 +30,13 @@ async function bootstrap() {
   setupRouterGuard(router);
 
   app.mount('#app');
+
+  // When closing MOCK, Tree Shaking `mockjs` dep
+  // 在关闭 MOCK 的时候, Tree Shaking `mockjs` 依赖
+  if (__VITE_USE_MOCK__) {
+    import('../mock/_mock-server').then(({ setupProdMockServer }) =>
+      setupProdMockServer(),
+    )
+  }
 }
 void bootstrap();

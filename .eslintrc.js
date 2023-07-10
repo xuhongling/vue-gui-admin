@@ -6,6 +6,7 @@ module.exports = {
     es6: true,
   },
   parser: 'vue-eslint-parser',
+  plugins: ['vue'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -21,14 +22,16 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    'vue/script-setup-uses-vars': 'error',
+    'prettier/prettier': 'off',
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    'space-before-function-paren': 'off',
+
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    'vue/custom-event-name-casing': 'off',
-    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'off',
@@ -41,16 +44,11 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
-    ],
-    'space-before-function-paren': 'off',
 
+    'vue/script-setup-uses-vars': 'error',
     'vue/attributes-order': 'off',
+    'vue/custom-event-name-casing': 'off',
+    'vue/v-on-event-hyphenation': 'off',
     'vue/one-component-per-file': 'off',
     'vue/html-closing-bracket-newline': 'off',
     'vue/max-attributes-per-line': 'off',
@@ -76,4 +74,4 @@ module.exports = {
     // 关闭驼峰命名规则
     'vue/multi-word-component-names': 'off',
   },
-};
+}

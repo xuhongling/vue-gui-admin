@@ -1,20 +1,20 @@
 import type { AppRouteRecordRaw, Menu } from '@/router/types';
 
 import { defineStore } from 'pinia';
-import { store } from '@/store';
+import { pinia } from '@/store';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
 import { transformObjToRoute, flatMultiLevelRoutes } from '@/router/helper/routeHelper';
 import { transformRouteToMenu } from '@/router/helper/menuHelper';
 
-import { PageEnum } from '@/enums/pageEnum';
-import { PermissionModeEnum } from '@/enums/appEnum';
+import { PageEnum } from '@gui-pkg/enums';
+import { PermissionModeEnum } from '@gui-pkg/enums';
 
 import { asyncRoutes } from '@/router/routes';
 import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
 
-import { filter } from '@/utils/helper/treeHelper';
+import { filterTree } from '@gui-pkg/utils';
 
 import { getMenuList } from '@/api/system/menu';
 import { getPermCode } from '@/api/system/user';
@@ -168,7 +168,7 @@ export const usePermissionStore = defineStore({
         // 角色权限
         case PermissionModeEnum.ROLE:
           // 对非一级路由进行过滤
-          routes = filter(asyncRoutes, routeFilter);
+          routes = filterTree(asyncRoutes, routeFilter);
           // 对一级路由根据角色权限过滤
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
@@ -179,13 +179,13 @@ export const usePermissionStore = defineStore({
         // 路由映射， 默认进入该case
         case PermissionModeEnum.ROUTE_MAPPING:
           // 对非一级路由进行过滤
-          routes = filter(asyncRoutes, routeFilter);
+          routes = filterTree(asyncRoutes, routeFilter);
           // 对一级路由再次根据角色权限过滤
           routes = routes.filter(routeFilter);
           // 将路由转换成菜单
           const menuList = transformRouteToMenu(routes, true);
           // 移除掉 ignoreRoute: true 的路由 非一级路由
-          routes = filter(routes, routeRemoveIgnoreFilter);
+          routes = filterTree(routes, routeRemoveIgnoreFilter);
           // 移除掉 ignoreRoute: true 的路由 一级路由；
           routes = routes.filter(routeRemoveIgnoreFilter);
           // 对菜单进行排序
@@ -218,7 +218,7 @@ export const usePermissionStore = defineStore({
           let routeList: AppRouteRecordRaw[] = [];
           try {
             // await this.changePermissionCode();
-            routeList = (await getMenuList({ status: '1' })) as AppRouteRecordRaw[];
+            routeList = (await getMenuList()) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }
@@ -234,7 +234,7 @@ export const usePermissionStore = defineStore({
 
           // remove meta.ignoreRoute item
           // 删除 meta.ignoreRoute 项
-          routeList = filter(routeList, routeRemoveIgnoreFilter);
+          routeList = filterTree(routeList, routeRemoveIgnoreFilter);
           routeList = routeList.filter(routeRemoveIgnoreFilter);
 
           routeList = flatMultiLevelRoutes(routeList);
@@ -251,5 +251,5 @@ export const usePermissionStore = defineStore({
 // Need to be used outside the setup
 // 需要在设置之外使用
 export function usePermissionStoreWithOut() {
-  return usePermissionStore(store);
+  return usePermissionStore(pinia);
 }
