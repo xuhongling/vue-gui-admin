@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full p-5">
+  <PageWrapper contentFullHeight fixedHeight>
     <VxeBasicTable class="w-full h-full" ref="tableRef" v-bind="gridOptions">
       <template #action="{ row }">
         <a-space>
@@ -27,13 +27,13 @@
       </template>
     </VxeBasicTable>
     <MenuDrawer @register="registerDrawer" @success="handleSuccess" />
-  </div>
+  </PageWrapper>
 </template>
 
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
   import { Icon } from '@gui-pkg/components';
-  import { useDrawer } from '@gui-pkg/antdcomponents';
+  import { PageWrapper, useDrawer } from '@gui-pkg/antdcomponents';
   import { BasicTableProps, VxeBasicTable, VxeGridInstance } from '@/components/vxe-table';
   import { columns, searchFormSchema } from './menu.data';
   import { getMenuList } from '@/api/demo/system';
