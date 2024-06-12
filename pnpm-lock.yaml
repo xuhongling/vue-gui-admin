@@ -9,26 +9,26 @@ dependencies:
     specifier: ^6.1.0
     version: 6.1.0(vue@3.3.13)
   '@gui-pkg/antdcomponents':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@gui-pkg/components':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@gui-pkg/enums':
-    specifier: ^1.1.22
-    version: 1.1.22
+    specifier: ^1.1.23
+    version: 1.1.23
   '@gui-pkg/hooks':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@gui-pkg/request':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@gui-pkg/styles':
-    specifier: ^1.1.22
-    version: 1.1.22
+    specifier: ^1.1.23
+    version: 1.1.23
   '@gui-pkg/utils':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.3.13)
@@ -90,19 +90,19 @@ dependencies:
     specifier: ^5.1.1
     version: 5.1.2(vue@3.3.13)
   vxe-table:
-    specifier: ^4.5.22
-    version: 4.6.9(vue@3.3.13)
+    specifier: 4.6.12
+    version: 4.6.12(vue@3.3.13)
   vxe-table-plugin-export-xlsx:
-    specifier: ^4.0.1
-    version: 4.0.1(vxe-table@4.6.9)
+    specifier: 4.0.1
+    version: 4.0.1(vxe-table@4.6.12)
   xe-utils:
     specifier: ^3.5.24
     version: 3.5.26
 
 devDependencies:
   '@gui-pkg/types':
-    specifier: ^1.1.22
-    version: 1.1.22(typescript@5.4.5)
+    specifier: ^1.1.23
+    version: 1.1.23(typescript@5.4.5)
   '@purge-icons/generated':
     specifier: ^0.9.0
     version: 0.9.0
@@ -860,13 +860,13 @@ packages:
       lodash.uniq: 4.5.0
     dev: false
 
-  /@gui-pkg/antdcomponents@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-naqdu1wU+jO6te9p5W76uZ4lASfhoU0IB1RgOApMfsJavox5MA4Nkd+lmewd3dmimCsgx2TZlnsdlr5XGCHZ7Q==}
+  /@gui-pkg/antdcomponents@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-qwVu3U6n3QRKagDvywHzxpbx/eZ1eYC7qqUwZKOCF0uXWomnXbipQ7eOsI8Q4w/IaoFmymEmjGWI4aIgrjBiPA==}
     dependencies:
       '@ant-design/icons-vue': 6.1.0(vue@3.3.13)
-      '@gui-pkg/components': 1.1.22(typescript@5.4.5)
-      '@gui-pkg/hooks': 1.1.22(typescript@5.4.5)
-      '@gui-pkg/utils': 1.1.22(typescript@5.4.5)
+      '@gui-pkg/components': 1.1.23(typescript@5.4.5)
+      '@gui-pkg/hooks': 1.1.23(typescript@5.4.5)
+      '@gui-pkg/utils': 1.1.23(typescript@5.4.5)
       ant-design-vue: 3.2.20(vue@3.3.13)
       exceljs: 4.4.0
       vue: 3.3.13(typescript@5.4.5)
@@ -875,11 +875,11 @@ packages:
       - typescript
     dev: false
 
-  /@gui-pkg/components@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-SWf5CZlqOe3htL2vhtLHGZlWQCeAwJsjzaHJkNMxeXpyJ82Yfw3+tdLGNWcNbbUzTKProKnAaV8GoZNkrB+L3w==}
+  /@gui-pkg/components@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-w8kGqjc1vlXbAWEJ11B8gGLNbrcMWCiE274MHvtuaKp9yMfdsxPfFQ4Hhua8x6k6QmN4Pe6YW9ENouZm799gJA==}
     dependencies:
-      '@gui-pkg/hooks': 1.1.22(typescript@5.4.5)
-      '@gui-pkg/utils': 1.1.22(typescript@5.4.5)
+      '@gui-pkg/hooks': 1.1.23(typescript@5.4.5)
+      '@gui-pkg/utils': 1.1.23(typescript@5.4.5)
       '@iconify/iconify': 3.1.1
       vue: 3.3.13(typescript@5.4.5)
     transitivePeerDependencies:
@@ -887,14 +887,14 @@ packages:
       - typescript
     dev: false
 
-  /@gui-pkg/enums@1.1.22:
-    resolution: {integrity: sha512-QRB7zut2vlWAEnICXu7xH8WVlFbT0Pm/x5cmsRSVWK8xf9xLkZmdYd7X4dnYrtp7vcA/mF0QzxF1F4jm2KKbvg==}
+  /@gui-pkg/enums@1.1.23:
+    resolution: {integrity: sha512-WeiIYfsJYOlF+BUfAHBsE62HtyzAuJu5jRBfspHhlX0ORbL/giUnZRpW4Tm5X+0XiW3C2dQraSjlmAAIdvZnSA==}
 
-  /@gui-pkg/hooks@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-Zg7nOVSXIxj+9j+00Lh835fWKGxhFlBKWiVAPH6wDUPmSv8oUb4YPsyVGYR0YM84bq/MFRG4SmenJV1jTbCaNA==}
+  /@gui-pkg/hooks@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-/eezwu6INm1bd872kQugTcsiYOGn0hN13zVmeKWEdui01wd7dnMbSKL3R5BEtCesR4aBvCgW3gNU1fMislFq/w==}
     dependencies:
-      '@gui-pkg/enums': 1.1.22
-      '@gui-pkg/utils': 1.1.22(typescript@5.4.5)
+      '@gui-pkg/enums': 1.1.23
+      '@gui-pkg/utils': 1.1.23(typescript@5.4.5)
       '@vueuse/core': 9.13.0(vue@3.3.13)
       echarts: 5.5.0
       lodash-es: 4.17.21
@@ -905,11 +905,11 @@ packages:
       - typescript
     dev: false
 
-  /@gui-pkg/request@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-CEBUAY6hAfelTM8RUfl3DMJR2TPvpjrXfLXK7Xr+wxZ0GuI1k+BwSNdygu+oKM3uhCEPbEx+tKwblHY16jTpNg==}
+  /@gui-pkg/request@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-Ni/teDaIrS/pVEGWUf+tibd5Fv/6HekSv8FZ/ewBxuVZXTuAwQSiyU2Ay3wpBhoDWcf5zWOnGY/m/HJkkySYlQ==}
     dependencies:
-      '@gui-pkg/types': 1.1.22(typescript@5.4.5)
-      '@gui-pkg/utils': 1.1.22(typescript@5.4.5)
+      '@gui-pkg/types': 1.1.23(typescript@5.4.5)
+      '@gui-pkg/utils': 1.1.23(typescript@5.4.5)
       axios: 1.6.8
       qs: 6.12.1
     transitivePeerDependencies:
@@ -918,14 +918,14 @@ packages:
       - typescript
     dev: false
 
-  /@gui-pkg/styles@1.1.22:
-    resolution: {integrity: sha512-k5tu5hEewQ03RL+tvhOUcKWgMsxQAUs8FBYHmIpUHt8nxLZFINfOnzgMooB+p/dWICga1ddk4RQB2c9QHGp3yg==}
+  /@gui-pkg/styles@1.1.23:
+    resolution: {integrity: sha512-4uSd7CXGz05D0BCAiWh8v+JTlruyBgns3s7LAaWyYA7KlZp0bRFXGBTSi9VwodTC3QWmEzVTdtPncDrN39Vydg==}
     dev: false
 
-  /@gui-pkg/types@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-2C8hEUGcat92WYgicEGH76LQUjuaJkWHg1UT+Pzru7pU5F5TZaOsn8xnL0F7R1Z8uMAAEFcY63NVGrDXCEiqGw==}
+  /@gui-pkg/types@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-hhgny7/M9eu4OA/ebgAtVnUGSlr3kNYdhFqBmf6WF+rUX9MQN3wv1zTzHl8AnM9BuhSh9WWAyFir2siVWrpqzg==}
     dependencies:
-      '@gui-pkg/enums': 1.1.22
+      '@gui-pkg/enums': 1.1.23
       pinia: 2.0.30(typescript@5.4.5)(vue@3.3.13)
       vue: 3.3.13(typescript@5.4.5)
       vue-router: 4.3.2(vue@3.3.13)
@@ -933,8 +933,8 @@ packages:
       - '@vue/composition-api'
       - typescript
 
-  /@gui-pkg/utils@1.1.22(typescript@5.4.5):
-    resolution: {integrity: sha512-FvZcp2OXnZNmTaOMeqZuI5jRUioHKmYvzKsqhvjf8edkF+GHZqoblyPSQtLGTc8A5OdBz4O9J15sY7/7r9lc2g==}
+  /@gui-pkg/utils@1.1.23(typescript@5.4.5):
+    resolution: {integrity: sha512-YkF4epbnYdLuidJfmRK9sg4AQYvQVami9wdXmuYpwFhi/y2fT2diMwFhdNSjqa58DoLG4lt/kguIP1Aq6iXLEw==}
     dependencies:
       '@vue/runtime-core': 3.2.47
       '@vueuse/core': 9.13.0(vue@3.3.13)
@@ -2807,8 +2807,8 @@ packages:
       entities: 4.5.0
     dev: true
 
-  /dom-zindex@1.0.2:
-    resolution: {integrity: sha512-QceDZxPlvzhpg6e8szxNiKPUt5Y9SfFTe3nZy8og3JoPQPlAlzBzHa/lhDkhgeG3cjbKyQcuoic+wymF0o0d1Q==}
+  /dom-zindex@1.0.4:
+    resolution: {integrity: sha512-PNk7u71TJ1C9Lwjjp5nNuQcVWuECFMmr9kZAwi2UbgWUM7jXdTCe4O4x5bhLUa07jpcZUVA5Du3ho7/FXzS9Ng==}
     dev: false
 
   /domelementtype@1.3.1:
@@ -3535,6 +3535,7 @@ packages:
   /fstream@1.0.12:
     resolution: {integrity: sha512-WvJ193OHa0GHPEL+AycEJgxvBEwyfRkN1vhjca23OaPVMCaLCXTd5qAu82AjTcgP1UJmytkOKb63Ypde7raDIg==}
     engines: {node: '>=0.6'}
+    deprecated: This package is no longer supported.
     dependencies:
       graceful-fs: 4.2.11
       inherits: 2.0.4
@@ -5424,6 +5425,7 @@ packages:
 
   /rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -6502,20 +6504,20 @@ packages:
       '@vue/shared': 3.3.13
       typescript: 5.4.5
 
-  /vxe-table-plugin-export-xlsx@4.0.1(vxe-table@4.6.9):
+  /vxe-table-plugin-export-xlsx@4.0.1(vxe-table@4.6.12):
     resolution: {integrity: sha512-puUOUfptu5ciEiFqTlVni3twLICSbkl87uXOsjZzrEyXJHJS9dYu7ZTD7/DRMqyuWyU3Idg7AekfcdcslP4Y/A==}
     peerDependencies:
       vxe-table: ^4.5.0
     dependencies:
-      vxe-table: 4.6.9(vue@3.3.13)
+      vxe-table: 4.6.12(vue@3.3.13)
     dev: false
 
-  /vxe-table@4.6.9(vue@3.3.13):
-    resolution: {integrity: sha512-t4HInEH8wvNMZXOub0FTlc5z/lIQ/xcF20drr5XjE5JJEWC7rC+KKURfP6dA59fJeTQKSh/PSCe9Mh02ygtZ2Q==}
+  /vxe-table@4.6.12(vue@3.3.13):
+    resolution: {integrity: sha512-CJr+LHY5La00ur3bV4i+pUBvfqVlo2WdE9ELnEpf7/8wBdOrwe1niPoGovsAagfCdfA0Esw7F5pCN+1RjV40Ww==}
     peerDependencies:
       vue: ^3.2.28
     dependencies:
-      dom-zindex: 1.0.2
+      dom-zindex: 1.0.4
       vue: 3.3.13(typescript@5.4.5)
       xe-utils: 3.5.26
     dev: false

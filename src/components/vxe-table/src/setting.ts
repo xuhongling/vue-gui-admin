@@ -40,7 +40,7 @@ const vxeTable = {
     proxyConfig: {
       form: true,
       props: {
-        result: 'items',
+        result: 'list',
         total: 'total',
       },
     },
