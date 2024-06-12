@@ -10,6 +10,7 @@ import { pinia } from '@/store';
 import VXETable from 'vxe-table';
 import 'vxe-table/lib/style.css';
 import 'ant-design-vue/dist/antd.less';
+import 'uno.css'
 import '@gui-pkg/styles';
 
 async function bootstrap() {

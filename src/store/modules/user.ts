@@ -1,6 +1,7 @@
 import type { UserInfo } from '@gui-pkg/types';
 import { isArray } from '@gui-pkg/utils';
-import { PageEnum, ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@gui-pkg/enums';
+import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@gui-pkg/enums';
+import { PageEnum } from '@/setting/router';
 import { defineStore } from 'pinia';
 import { pinia } from '@/store';
 import { router } from '@/router';
@@ -90,7 +91,7 @@ export const useUserStore = defineStore({
     ): Promise<GetUserInfoModel | null> {
       try {
         const { goHome = true, ...loginParams } = params;
-        console.log(loginParams, 'loginParams');
+
         // 登录接口，根据项目自定
         /*const data2 = await loginApi(loginParams);
         console.log(data2, 'data2data2data2');*/

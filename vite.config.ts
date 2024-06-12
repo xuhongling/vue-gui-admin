@@ -1,15 +1,17 @@
 import type { UserConfig, ConfigEnv, ProxyOptions } from 'vite';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
 import { loadEnv } from 'vite';
 import { resolve } from 'path';
-import { viteMockServe } from 'vite-plugin-mock'
 import dayjs from 'dayjs';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import Unocss from 'unocss/vite';
+import { presetIcons, presetMini } from 'unocss';
+import { viteMockServe } from 'vite-plugin-mock';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { ViteEnv }  from '#/config.d';
 
-export function configSvgIconsPlugin(isBuild: boolean) {
+const configSvgIconsPlugin = (isBuild: boolean) => {
   const svgIconsPlugin = createSvgIconsPlugin({
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
     svgoOptions: isBuild,
@@ -20,7 +22,7 @@ export function configSvgIconsPlugin(isBuild: boolean) {
 }
 
 
-export function configMockPlugin(isBuild: boolean) {
+const configMockPlugin = (isBuild: boolean) => {
   return viteMockServe({
     ignore: /^\_/,
     mockPath: 'mock',
@@ -29,7 +31,25 @@ export function configMockPlugin(isBuild: boolean) {
   })
 }
 
-export function resolveProxy(proxyList: [string, string][] = []) {
+const configUnocssPlugin = () => {
+  return Unocss({
+    content: { pipeline: { exclude: ['node_modules', '.git', 'dist'] } },
+    presets: [presetIcons(), presetMini({ dark: 'class' })],
+    shortcuts: {
+      'flex-center': 'flex justify-center items-center',
+      'grid-center': 'grid place-content-center',
+    },
+    theme: {
+      colors: {
+        primary: 'var(--primary-color)',
+      },
+      backgroundColor: {},
+      transitionProperty: [],
+    },
+  })
+}
+
+const resolveProxy = (proxyList: [string, string][] = []) => {
   const proxy: Record<string, ProxyOptions> = {}
   for (const [prefix, target] of proxyList) {
     const isHttps = /^https:\/\//.test(target)
@@ -47,7 +67,7 @@ export function resolveProxy(proxyList: [string, string][] = []) {
 }
 
 // Read all environment variable configuration files to process.env
-export function wrapperEnv(envConf: Record<string, any>): ViteEnv {
+function wrapperEnv(envConf: Record<string, any>): ViteEnv {
   const viteEnv: Partial<ViteEnv> = {}
 
   for (const key of Object.keys(envConf)) {
@@ -90,7 +110,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
   return {
     base: VITE_PUBLIC_PATH,
-    plugins: [vue(), vueJsx(), configSvgIconsPlugin(isBuild), (VITE_USE_MOCK && configMockPlugin(isBuild))],
+    plugins: [vue(), vueJsx(), configUnocssPlugin(), configSvgIconsPlugin(isBuild), (VITE_USE_MOCK && configMockPlugin(isBuild))],
     resolve: {
       extensions: ['.js', '.ts', '.tsx', '.vue', '.json', '.css', '.less'],
       alias: {

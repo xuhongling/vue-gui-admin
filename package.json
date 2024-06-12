@@ -1,7 +1,7 @@
 {
   "name": "vue-gui-admin",
   "private": true,
-  "version": "1.0.9",
+  "version": "1.1.0",
   "scripts": {
     "bootstrap": "pnpm install",
     "dev": "vite",
@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
-    "@gui-pkg/antdcomponents": "^1.1.18",
-    "@gui-pkg/components": "^1.1.18",
-    "@gui-pkg/enums": "^1.1.18",
-    "@gui-pkg/hooks": "^1.1.18",
-    "@gui-pkg/request": "^1.1.18",
-    "@gui-pkg/styles": "^1.1.18",
-    "@gui-pkg/utils": "^1.1.18",
+    "@gui-pkg/antdcomponents": "^1.1.23",
+    "@gui-pkg/components": "^1.1.23",
+    "@gui-pkg/enums": "^1.1.23",
+    "@gui-pkg/hooks": "^1.1.23",
+    "@gui-pkg/request": "^1.1.23",
+    "@gui-pkg/styles": "^1.1.23",
+    "@gui-pkg/utils": "^1.1.23",
     "@vueuse/core": "^10.9.0",
     "ant-design-vue": "^3.2.20",
     "axios": "^1.6.8",
@@ -46,7 +46,7 @@
     "xe-utils": "^3.5.24"
   },
   "devDependencies": {
-    "@gui-pkg/types": "^1.1.18",
+    "@gui-pkg/types": "^1.1.23",
     "@purge-icons/generated": "^0.9.0",
     "@types/node": "^20.4.1",
     "@types/ol": "^6.5.3",
@@ -68,18 +68,18 @@
     "postcss-less": "^6.0.0",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^3.0.0",
-    "rimraf": "^5.0.1",
+    "rimraf": "^3.0.2",
     "stylelint-order": "^6.0.4",
-    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4",
-    "vite": "^4.5.2",
+    "unocss": "^0.58.3",
+    "vite": "4.5.3",
     "vite-plugin-mock": "2.9.6",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-eslint-parser": "^9.1.1",
     "vue-tsc": "^1.8.27"
   },
   "engines": {
-    "node": "^12 || >=14"
+    "node": "^16 || >=16"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
